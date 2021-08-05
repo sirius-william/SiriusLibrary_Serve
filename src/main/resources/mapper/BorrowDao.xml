@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sirius.dao.mysql.BorrowDao">
+    <select id="selectBorrow" resultType="com.sirius.domain.BorrowInfo">
+        select userid, isbn, b_time, r_time from tb_book_borrow where userid = #{userid};
+    </select>
+    <insert id="insertBorrowBook">
+        insert into tb_book_borrow(userid, isbn, b_time, r_time) values (#{userid}, #{info.isbn}, #{info.b_time}, #{info.r_time});
+    </insert>
+    <delete id="deleteBorrowBook">
+        delete from tb_book_borrow where userid = #{userid} and isbn = #{info.isbn};
+    </delete>
+</mapper>
