@@ -4,7 +4,6 @@ import com.sirius.annotation.UseToken;
 import com.sirius.exceptions.AuthException;
 import com.sirius.service.impls.RedisServiceImpl;
 import com.sirius.utils.Token;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -16,10 +15,16 @@ import javax.servlet.http.HttpServletResponse;
 /*权限验证*/
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
-    @Autowired
+
     Token tokenUtil;
-    @Autowired
+
     RedisServiceImpl redisServiceImpl;
+
+    public AuthInterceptor(Token tokenUtil, RedisServiceImpl redisServiceImpl) {
+        this.tokenUtil = tokenUtil;
+        this.redisServiceImpl = redisServiceImpl;
+    }
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("进入拦截器");
@@ -44,4 +49,5 @@ public class AuthInterceptor implements HandlerInterceptor {
         }
         return true;
     }
+
 }

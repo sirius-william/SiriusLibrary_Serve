@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+
 
 @RestController
 @UseToken
@@ -34,19 +36,24 @@ public class BookController {
 
     @RequestMapping(value = "/books/all", method = RequestMethod.POST)
     public Object getBooks() {
-        return bookService.showAllBook();
+        HashMap<String, Object> res = new HashMap<>();
+        res.put("success", "1");
+        res.put("data", bookService.showAllBook());
+        return res;
     }
     // 按条件查找书籍，书名必选
 
     @RequestMapping(value = "/book/search", method = RequestMethod.GET)
     public Object searchBooks(@RequestParam(required = false) Integer id, @RequestParam(required = true) String name,
-                              @RequestParam(required = false) String outcome, @RequestParam(required = false)String type,
-                              @RequestParam(required = false)String author, @RequestParam(required = false)String isbn,
-                              @RequestParam(required = false)Integer total, @RequestParam(required = false) Integer remain,
+                              @RequestParam(required = false) String outcome, @RequestParam(required = false) String type,
+                              @RequestParam(required = false) String author, @RequestParam(required = false) String isbn,
+                              @RequestParam(required = false) Integer total, @RequestParam(required = false) Integer remain,
                               @RequestParam(required = false) Integer ordered, @RequestParam(required = false) Integer price,
                               @RequestParam(required = false) String publish) {
         Book book = new Book(id, name, author, outcome, type, isbn, null, total, remain, ordered, publish, price);
-
-        return bookService.showByOnCondition(book);
+        HashMap<String, Object> res = new HashMap<>();
+        res.put("success", "1");
+        res.put("data", bookService.showByOnCondition(book));
+        return res;
     }
 }

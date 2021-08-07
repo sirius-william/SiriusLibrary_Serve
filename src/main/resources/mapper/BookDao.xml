@@ -103,6 +103,12 @@
         <if test="ordered != null">
             ordered = #{ordered} and
         </if>
+        <if test="price != null">
+            price = #{price} and
+        </if>
+        <if test="publish != null">
+            publish = #{publish} and
+        </if>
         1 = 1;
     </select>
     <select id="selectAllBook" resultType="com.sirius.domain.Book">

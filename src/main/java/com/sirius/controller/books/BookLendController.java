@@ -1,5 +1,6 @@
 package com.sirius.controller.books;
 
+import com.sirius.annotation.UseToken;
 import com.sirius.domain.Book;
 import com.sirius.service.interfaces.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import java.util.HashMap;
 
 // 管理图书借还
 @RestController
+@UseToken
 public class BookLendController {
     @Autowired
     BookService bookService;

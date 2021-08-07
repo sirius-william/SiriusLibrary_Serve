@@ -46,7 +46,7 @@ public class Book {
 
     public Book(Integer id, String name, String author, String outtime,
                 String type, String isbn, String picture, Integer total,
-                Integer remain, Integer ordered, String publish, int price) {
+                Integer remain, Integer ordered, String publish, Integer price) {
         this.id = id;
         this.name = name;
         this.author = author;
@@ -140,4 +140,5 @@ public class Book {
     public void setPrice(Integer price) {
         this.price = price;
     }
+
 }

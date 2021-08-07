@@ -13,12 +13,18 @@ public class Token {
     @Value("${token.expireTime}")
     public String expireTime;
 
+    public Token() {
+    }
+
     public String getNewToken(UserInfo info) {
         String token = JWT.create().withAudience(info.getId().toString()).sign(Algorithm.HMAC256(this.privateKey));
         return token;
     }
 
     public String parseToken(String token) {
+        if (token.equals("") || token == null){
+            return null;
+        }
         String audience = JWT.decode(token).getAudience().get(0);
         return audience;
     }
