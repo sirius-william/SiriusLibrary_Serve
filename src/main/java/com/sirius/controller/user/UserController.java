@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 @RestController
@@ -31,7 +30,7 @@ public class UserController {
 
     // 用户登录
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Object login(HttpServletRequest request, String type, String username, String password){
+    public Object login(String type, String username, String password){
         HashMap<String, Object> res = new HashMap<>();
         System.out.println(type + "\t" + username + "\t" + password);
         UserInfo check = securityServiceImpl.login(username, password);
