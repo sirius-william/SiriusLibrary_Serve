@@ -1,7 +1,7 @@
 package com.sirius.controller.user;
 
 import com.sirius.annotation.UseToken;
-import com.sirius.service.impls.UserInfoServiceImpl;
+import com.sirius.service.interfaces.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 @UseToken
 public class UserInfoController {
     @Autowired
-    UserInfoServiceImpl userInfoService;
+    UserInfoService userInfoService;
 
     // 获取用户列表
     @RequestMapping(value = "/user", method = RequestMethod.POST)
