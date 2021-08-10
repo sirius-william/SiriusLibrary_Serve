@@ -14,9 +14,12 @@ public class UserInfo {
     private String vip;
     private String email;
     private String address;
+    private Integer type;
 
-    public UserInfo(){}
-    public UserInfo(Integer id, String name, String sex, String tel, String vip, String email, String address) {
+    public UserInfo(){
+
+    }
+    public UserInfo(Integer id, String name, String sex, String tel, String vip, String email, String address, Integer type) {
         this.id = id;
         this.name = name;
         this.sex = sex;
@@ -24,6 +27,7 @@ public class UserInfo {
         this.vip = vip;
         this.email = email;
         this.address = address;
+        this.type = type;
     }
 
     public Integer getId() {
@@ -80,5 +84,13 @@ public class UserInfo {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

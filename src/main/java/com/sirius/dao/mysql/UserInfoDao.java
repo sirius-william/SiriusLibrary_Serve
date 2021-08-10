@@ -16,16 +16,18 @@ public interface UserInfoDao {
     ArrayList<UserInfo> selectUserInfoByVIP(String vip);
     // 根据性别查询
     ArrayList<UserInfo> selectUserInfoBySex(String sex);
+    // 根据用户类型查询
+    ArrayList<UserInfo> selectUserInfoByType(Integer type);
     // 根据对象查询
-    UserInfo selectUserInfo(UserInfo userInfo);
+    UserInfo selectUserInfo(@Param("userInfo") UserInfo userInfo);
     // 根据电话查询
     UserInfo selectUserInfoByTel(String tel);
     // 查询用户数量
     Integer selectCount();
     // 根据条件查询数量，参数为对象，可选条件，非选择条件对象参数为null。
-    Integer selectCountByCondition(UserInfo userInfo);
+    Integer selectCountByCondition(@Param("userInfo") UserInfo userInfo);
     // 根据条件查询，参数为对象，可选条件，非选择条件对象参数为null。
-    ArrayList<UserInfo> selectByCondition(UserInfo userInfo);
+    ArrayList<UserInfo> selectByCondition(@Param("userInfo") UserInfo userInfo);
     // 根据id查询用户类型
     String selectVIPById(Integer id);
     /*修改*/
@@ -39,10 +41,10 @@ public interface UserInfoDao {
     // 根据id删除
     int deleteUserInfoById(Integer id);
     // 根据对象删除
-    int deleteUserInfo(UserInfo userInfo);
+    int deleteUserInfo(@Param("userInfo") UserInfo userInfo);
     // 根据条件删除，参数为对象，非选择条件对象参数为null
-    int deleteUserInfoByCondition(UserInfo userInfo);
+    int deleteUserInfoByCondition(@Param("userInfo") UserInfo userInfo);
     /*增加*/
-    int insertUserInfo(UserInfo userInfo);
+    int insertUserInfo(@Param("userInfo") UserInfo userInfo);
 
 }

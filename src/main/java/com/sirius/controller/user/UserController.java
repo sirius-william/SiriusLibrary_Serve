@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 @RestController
@@ -32,8 +31,8 @@ public class UserController {
 
     // 用户登录
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Object run(HttpServletRequest request, String type, String username, String password){
-        HashMap<String, String> res = new HashMap<>();
+    public Object login(HttpServletRequest request, String type, String username, String password){
+        HashMap<String, Object> res = new HashMap<>();
         System.out.println(type + "\t" + username + "\t" + password);
         UserInfo check = securityServiceImpl.login(username, password);
 
@@ -44,8 +43,9 @@ public class UserController {
             res.put("success", "1");
             String tokenString = token.getNewToken(check);
             res.put("token", tokenString);
+            res.put("name", check.getName());
+            res.put("id", check.getId());
             redisServiceImpl.setToken(check.getId(), tokenString);
-            HttpSession session = request.getSession(true);
         }
         return res;
     }
@@ -74,4 +74,5 @@ public class UserController {
         res.put("id", id.toString());
         return res;
     }
+
 }

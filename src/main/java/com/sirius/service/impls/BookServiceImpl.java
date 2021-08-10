@@ -33,7 +33,6 @@ public class BookServiceImpl implements BookService {
 
     //借还书书功能操作方法，目前仅有mysql，待完善
 
-
     @Override
     public HashMap<String, String> borrow(HashMap<Book, Integer> books, int userid) {
         HashMap<String, String> res = new HashMap<>();
